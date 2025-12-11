@@ -7,15 +7,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Run from build');
     return Scaffold(
       appBar: AppBar(
         title: Text('HomeScreen'),
-        backgroundColor: Colors.purple.shade200,
+        backgroundColor: Colors.purple.shade300,
       ),
       body: Center(
-        child: Text(
-          '${Provider.of<CounterProvider>(context, listen: true).getCount()}',
-          style: TextStyle(fontSize: 25),
+        child: Consumer(
+          builder: (ctx, _, ___) {
+            print('Run from Consumer');
+            return Text(
+              '${Provider.of<CounterProvider>(ctx, listen: true).getCount()}',
+              style: TextStyle(fontSize: 25),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
