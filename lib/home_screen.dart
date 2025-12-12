@@ -18,7 +18,8 @@ class HomeScreen extends StatelessWidget {
           builder: (ctx, _, ___) {
             print('Run from Consumer');
             return Text(
-              '${Provider.of<CounterProvider>(ctx, listen: true).getCount()}',
+              //'${Provider.of<CounterProvider>(ctx, listen: true).getCount()}',
+              '${ctx.watch<CounterProvider>().getCount()}',
               style: TextStyle(fontSize: 25),
             );
           },
@@ -26,7 +27,8 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Provider.of<CounterProvider>(context, listen: false).incrementCount();
+          // Provider.of<CounterProvider>(context, listen: false).incrementCount();
+          context.read<CounterProvider>().incrementCount();
         },
         child: Icon(Icons.add),
       ),
