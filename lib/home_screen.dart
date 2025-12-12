@@ -25,12 +25,23 @@ class HomeScreen extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Provider.of<CounterProvider>(context, listen: false).incrementCount();
-          context.read<CounterProvider>().incrementCount();
-        },
-        child: Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              // Provider.of<CounterProvider>(context, listen: false).incrementCount();
+              context.read<CounterProvider>().incrementCount();
+            },
+            child: Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              context.read<CounterProvider>().decrementCount();
+            },
+            child: Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
